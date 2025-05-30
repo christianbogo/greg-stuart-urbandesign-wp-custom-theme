@@ -1,7 +1,7 @@
 /*
 Theme Name: Greg Stuart Urban Design
-Theme URI: https://gregstuarturbandesign.com/ (replace with actual URL when live)
-Author: Your Name (or Christian Cutter)
+Theme URI: https://gregstuarturbandesign.com/
+Author: Your Name
 Author URI: https://your-website.com/
 Description: Custom theme for Greg Stuart Urban Design.
 Version: 1.0.0
@@ -11,4 +11,495 @@ Tags: custom-theme, responsive-layout, corporate
 Text Domain: gregstuart-urbandesign
 */
 
-/* Your theme's CSS will go below this block */
+/* === Global Resets & Box Sizing === */
+html {
+  box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+li,
+figure,
+figcaption,
+blockquote,
+dl,
+dd {
+  margin: 0;
+  padding: 0;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* === Body & Typography === */
+body {
+  font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif; /* Example: Professional sans-serif */
+  font-size: 16px;
+  line-height: 1.6;
+  color: #333; /* Dark gray for text */
+  background-color: #fff; /* White background */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0; /* Ensure no browser default margin */
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif; /* Example: Clean, strong sans-serif for headings */
+  margin-bottom: 0.75em;
+  color: #1a237e; /* Example: A deep blue for headings */
+  line-height: 1.3;
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+h2 {
+  font-size: 2rem;
+}
+h3 {
+  font-size: 1.75rem;
+}
+h4 {
+  font-size: 1.5rem;
+}
+
+p {
+  margin-bottom: 1em;
+}
+
+a {
+  color: #0056b3; /* Professional blue for links */
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+a:hover,
+a:focus {
+  color: #003d80; /* Darker blue on hover */
+  text-decoration: underline;
+}
+
+/* === Site Layout === */
+.container {
+  width: 90%;
+  max-width: 1100px; /* Adjust as needed */
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.site-content {
+  flex-grow: 1; /* Ensures footer stays at the bottom */
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.page-section {
+  padding: 3rem 0;
+  border-bottom: 1px solid #eee; /* Subtle separator for sections */
+}
+.page-section:last-child {
+  border-bottom: none;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #1a237e; /* Consistent heading color */
+}
+
+/* === Header Area (.site-header) === */
+.site-header {
+  background-color: #f8f9fa; /* Light gray background for header */
+  padding: 1rem 0;
+  border-bottom: 1px solid #dee2e6; /* Subtle border */
+}
+
+.site-header .container {
+  /* If you wrap header content in a container */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.site-branding {
+  /* Styles for your logo and site title */
+  /* Example: if logo and title are side-by-side */
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem; /* For mobile stacking */
+}
+.site-branding .custom-logo {
+  max-height: 60px; /* Adjust as needed */
+  width: auto;
+  margin-right: 15px;
+}
+.site-title {
+  font-size: 1.8rem; /* Adjust as needed */
+  font-weight: 700;
+  color: #1a237e;
+  margin: 0;
+}
+.site-title a {
+  color: inherit;
+  text-decoration: none;
+}
+.site-description {
+  font-size: 0.9rem;
+  color: #555;
+  margin: 0;
+}
+
+/* --- Navigation --- */
+.main-navigation {
+  /* Styles for your main navigation */
+  width: 100%; /* For mobile */
+}
+.main-navigation ul#primary-menu {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Or flex-end for right alignment */
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.main-navigation ul#primary-menu li {
+  position: relative; /* For dropdown positioning */
+  margin: 0 10px; /* Spacing between nav items */
+}
+.main-navigation ul#primary-menu li a {
+  display: block;
+  padding: 0.8rem 0.5rem; /* Padding for nav links */
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  letter-spacing: 0.05em;
+  border-bottom: 2px solid transparent; /* For active/hover effect */
+}
+.main-navigation ul#primary-menu li a:hover,
+.main-navigation ul#primary-menu li a:focus,
+.main-navigation ul#primary-menu li.current-menu-item > a,
+.main-navigation ul#primary-menu li.current-menu-ancestor > a {
+  color: #0056b3;
+  border-bottom-color: #0056b3;
+}
+
+/* Dropdown Menu Styles (Basic - needs JS for toggle on mobile if not using CSS hover) */
+.main-navigation ul ul {
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 100%;
+  background-color: #fff; /* Background for dropdown */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  min-width: 200px; /* Width of dropdown */
+  padding: 0.5rem 0;
+}
+.main-navigation ul li:hover > ul,
+.main-navigation ul li:focus-within > ul {
+  /* For keyboard accessibility */
+  display: block;
+}
+.main-navigation ul ul li {
+  width: 100%;
+  margin: 0;
+}
+.main-navigation ul ul li a {
+  padding: 0.5rem 1rem;
+  border-bottom: none; /* Reset border for dropdown items */
+  color: #333;
+  font-size: 0.85rem;
+  text-transform: none;
+  letter-spacing: normal;
+}
+.main-navigation ul ul li a:hover,
+.main-navigation ul ul li a:focus {
+  background-color: #f0f0f0; /* Hover background for dropdown items */
+  color: #0056b3;
+}
+
+/* Mobile Menu (Hamburger - you'll need JS for this typically) */
+.menu-toggle {
+  display: none; /* Hidden by default, shown in media query */
+}
+
+/* === Main Content Area (#content) === */
+/* .front-page-content, .page-content-area - specific classes for pages */
+.entry-title {
+  /* For page titles in page.php */
+  margin-bottom: 1.5rem;
+  text-align: left; /* Or center if preferred */
+}
+.entry-content p,
+.entry-content ul,
+.entry-content ol {
+  margin-bottom: 1.5em;
+}
+.entry-content ul,
+.entry-content ol {
+  padding-left: 1.5em;
+  list-style-position: outside;
+}
+.entry-content ul {
+  list-style-type: disc;
+}
+.entry-content ol {
+  list-style-type: decimal;
+}
+
+/* === Homepage Specific Sections (front-page.php) === */
+.hero-section {
+  /* Styles for your hero/cover art section */
+  background-color: #e9ecef; /* Fallback if no image */
+  padding: 0; /* Full width typically */
+  text-align: center;
+  margin-bottom: 2rem; /* Space below hero */
+}
+.hero-section .hero-image-container img {
+  width: 100%;
+  max-height: 500px; /* Adjust as needed */
+  object-fit: cover; /* Ensures image covers the area */
+}
+
+.intro-text-section .entry-content {
+  max-width: 800px; /* Readable width for intro text */
+  margin: 0 auto;
+  text-align: center; /* Or left */
+}
+
+.services-teaser-section .services-grid {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(280px, 1fr)
+  ); /* Responsive grid */
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+.services-teaser-item {
+  background-color: #f8f9fa; /* Light background for each item */
+  padding: 1.5rem;
+  border: 1px solid #dee2e6;
+  border-radius: 4px;
+  text-align: center; /* Or left */
+}
+.services-teaser-item h3 {
+  margin-top: 0;
+  color: #0056b3;
+}
+.services-teaser-item h3 a:hover {
+  text-decoration: none;
+}
+.all-services-link {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.contact-form-section {
+  background-color: #f8f9fa; /* Slight distinction for contact area */
+}
+
+/* === Page Template Specifics (page.php) === */
+.page-featured-image {
+  margin-bottom: 1.5rem;
+}
+.page-featured-image img {
+  border-radius: 4px; /* Optional subtle rounding */
+}
+
+/* === Buttons === */
+.button,
+input[type="submit"] {
+  display: inline-block;
+  background-color: #007bff; /* Primary button color */
+  color: #fff;
+  padding: 10px 20px;
+  text-decoration: none;
+  font-size: 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.button:hover,
+input[type="submit"]:hover {
+  background-color: #0056b3; /* Darker on hover */
+  color: #fff;
+  text-decoration: none;
+}
+.services-teaser-item .button.read-more-button {
+  background-color: transparent;
+  color: #007bff;
+  border: 1px solid #007bff;
+  padding: 8px 15px;
+  font-size: 0.9rem;
+}
+.services-teaser-item .button.read-more-button:hover {
+  background-color: #007bff;
+  color: #fff;
+}
+
+/* === Forms (Basic styling for WPForms) === */
+.wpforms-container .wpforms-field label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 0.5em;
+}
+.wpforms-container .wpforms-field input[type="text"],
+.wpforms-container .wpforms-field input[type="email"],
+.wpforms-container .wpforms-field input[type="tel"],
+.wpforms-container .wpforms-field input[type="url"],
+.wpforms-container .wpforms-field input[type="password"],
+.wpforms-container .wpforms-field input[type="number"],
+.wpforms-container .wpforms-field input[type="date"],
+.wpforms-container .wpforms-field select,
+.wpforms-container .wpforms-field textarea {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 1em;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.wpforms-container .wpforms-submit-container .wpforms-submit {
+  /* Uses .button styles above */
+}
+
+/* === Footer Area (.site-footer) === */
+.site-footer {
+  background-color: #343a40; /* Dark background for footer */
+  color: #f8f9fa; /* Light text on dark background */
+  padding: 2rem 0;
+  text-align: center;
+  margin-top: auto; /* Pushes footer to bottom if content is short */
+}
+.site-footer .site-info {
+  font-size: 0.9rem;
+}
+.site-footer .site-info a {
+  color: #adb5bd; /* Lighter link color for footer */
+}
+.site-footer .site-info a:hover {
+  color: #fff;
+}
+
+/* === WordPress Core & Utility Classes === */
+/* Screen reader text - from Twenty Twenty-One or your Fine Arts theme */
+.screen-reader-text {
+  border: 0;
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute !important;
+  width: 1px;
+  word-wrap: normal !important;
+}
+
+/* === Media Queries for Responsiveness === */
+@media (min-width: 768px) {
+  /* Tablet and larger */
+  .site-header .container {
+    flex-wrap: nowrap; /* Prevent wrapping on larger screens */
+  }
+  .site-branding {
+    margin-bottom: 0;
+  }
+  .main-navigation {
+    width: auto; /* Allow nav to shrink to its content */
+  }
+  .menu-toggle {
+    display: none; /* Ensure hamburger is hidden */
+  }
+  .entry-title {
+    font-size: 2.8rem;
+  }
+}
+
+@media (max-width: 767px) {
+  /* Mobile */
+  h1 {
+    font-size: 2rem;
+  }
+  h2 {
+    font-size: 1.75rem;
+  }
+  h3 {
+    font-size: 1.5rem;
+  }
+
+  .main-navigation ul#primary-menu {
+    /* Basic mobile menu - full width, items stack.
+           You'll need JavaScript for a proper toggle. */
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .main-navigation ul#primary-menu li {
+    margin: 0;
+    width: 100%;
+  }
+  .main-navigation ul#primary-menu li a {
+    padding: 0.8rem 1rem; /* Adjust padding for mobile */
+    border-bottom: 1px solid #eee;
+  }
+  .main-navigation ul#primary-menu li:last-child a {
+    border-bottom: none;
+  }
+  .main-navigation ul ul {
+    position: static; /* Dropdowns become part of the stacked list */
+    box-shadow: none;
+    padding-left: 1rem; /* Indent sub-items */
+    background-color: transparent;
+  }
+  .main-navigation ul li:hover > ul,
+  .main-navigation ul li:focus-within > ul {
+    display: block; /* Always show submenu items if parent is active/focused */
+  }
+
+  /* Example for a hamburger menu toggle (add .menu-toggle button to header.php)
+    .menu-toggle {
+        display: block; // Show on mobile
+        background: #333;
+        color: #fff;
+        border: none;
+        padding: 10px;
+        cursor: pointer;
+    }
+    .main-navigation ul#primary-menu.toggled-on { // Class added by JS
+        display: flex;
+    }
+    */
+}
